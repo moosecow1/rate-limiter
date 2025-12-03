@@ -1,5 +1,5 @@
 # Custom Rate Limiter
-This is a simple REST API made with [Gin](https://gin-gonic.com/) to learn Go and implement a custom rate limiter.
+This is a simple REST API made with Gin to learn Go and implement a custom rate limiter.
 
 The demo API has one endpoint that returns a random quote. 
 
