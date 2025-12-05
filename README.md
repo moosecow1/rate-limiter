@@ -3,13 +3,11 @@ This is a simple REST API made with Gin to learn Go and implement a custom rate 
 
 The demo API has one endpoint that returns a random quote. 
 
-### Running Instructions
+### Run Instructions
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2. Open Docker Desktop
-3. Download the source code
-4. Set the working directory to the project
-5. Run `docker-compose up`
+3. Run `docker-compose up`
 
 ### Rate Limit
 If a client sends too many requests in too short of a time span, new requests will be blocked.
