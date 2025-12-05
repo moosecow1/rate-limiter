@@ -1,0 +1,34 @@
+name: quoteapi
+
+services:
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: limiter
+      POSTGRES_PASSWORD: limiterpass
+      POSTGRES_DB: limiterdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    shm_size: 128mb
+
+  api:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: limiter
+      DB_PASS: limiterpass
+      DB_NAME: limiterdb
+      RATE_LIMIT: 10
+      RATE_PERIOD: 60
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:
