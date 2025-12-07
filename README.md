@@ -1,15 +1,16 @@
-# Custom Rate Limiter
-This is a simple REST API made with Gin to learn Go and implement a custom rate limiter.
+# API Rate Limiter
 
-The demo API has one endpoint that returns a random quote. 
+> REST API with a custom rate limiter
 
-### Run Instructions
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# Instructions
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2. Open Docker Desktop
 3. Run `docker-compose up`
 
-### Rate Limit
+# Rate Limit
 If a client sends too many requests in too short of a time span, new requests will be blocked.
 
 The limits can be configured. 
@@ -21,7 +22,7 @@ It will tell you how long until you can request again.
 }
 ```
 
-### API
+# API
 `GET /get-quote` returns a random quote:
 ```json
 {
@@ -29,7 +30,7 @@ It will tell you how long until you can request again.
   "author": "Example Name"
 }
 ```
-`GET /get-quote?Demo Name` returns only quotes by a specific person:
+`GET /get-quote?Demo Name` returns only quotes by a specific author:
 ```json
 {
   "text": "Example quote.",
