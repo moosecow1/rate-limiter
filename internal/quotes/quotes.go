@@ -22,17 +22,16 @@ func init() {
 	quotes, err = LoadQuotes()
 
 	if err != nil {
-		fmt.Errorf("Failed to load quotes: %w", err)
+		log.Printf("Failed to load quotes: %v", err)
 		return
 	}
 }
 
 func LoadQuotes() ([]Quote, error) {
-
 	content, err := os.ReadFile(quotesFilePath)
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to read file: %w", err)
+		return nil, fmt.Errorf("Failed to read file: %v", err)
 	}
 
 	var quotes []Quote
@@ -40,23 +39,13 @@ func LoadQuotes() ([]Quote, error) {
 	err = json.Unmarshal(content, &quotes)
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to parse JSON: %w", err)
+		return nil, fmt.Errorf("Failed to parse JSON: %v", err)
 	}
 
 	return quotes, nil
-
 }
 
 func PickQuote() (Quote, error) {
-
-	/*
-		quotes, err := LoadQuotes()
-
-		if err != nil {
-			return Quote{}, fmt.Errorf("Error loading quotes: %w", err)
-		}
-	*/
-
 	if len(quotes) < 1 {
 		return Quote{}, fmt.Errorf("There are no quotes.")
 	}
@@ -64,19 +53,9 @@ func PickQuote() (Quote, error) {
 	num := rand.Intn(len(quotes))
 
 	return quotes[num], nil
-
 }
 
 func PickQuoteFromAuthor(author string) (Quote, error) {
-
-	/*
-		quotes, err := LoadQuotes()
-
-		if err != nil {
-			return Quote{}, fmt.Errorf("Error loading quotes: %w", err)
-		}
-	*/
-
 	filtered := quotes[:0]
 
 	log.Printf("%t %s", author == "", author)
@@ -98,5 +77,4 @@ func PickQuoteFromAuthor(author string) (Quote, error) {
 	num := rand.Intn(len(filtered))
 
 	return filtered[num], nil
-
 }
