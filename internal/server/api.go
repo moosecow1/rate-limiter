@@ -11,7 +11,6 @@ import (
 )
 
 func StartAPI() {
-
 	gin.SetMode(gin.ReleaseMode)
 
 	router := gin.Default()
@@ -23,7 +22,7 @@ func StartAPI() {
 		allowed, err := limiter.CanAccess(ip)
 
 		if err != nil {
-			log.Printf("Error checking rate limit: %w", err)
+			log.Printf("Error checking rate limit: %v", err)
 
 			ctx.JSON(http.StatusInternalServerError, gin.H{
 				"error": err.Error(),
@@ -38,7 +37,7 @@ func StartAPI() {
 			val, err = limiter.GetOldestLog(ip)
 
 			if err != nil {
-				log.Printf("Failed to get 'try_in': %w", err)
+				log.Printf("Failed to get 'try_in': %v", err)
 
 				ctx.JSON(http.StatusInternalServerError, gin.H{
 					"error": err.Error(),
@@ -73,5 +72,4 @@ func StartAPI() {
 	})
 
 	router.Run()
-
 }
