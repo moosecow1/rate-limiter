@@ -58,8 +58,6 @@ func PickQuote() (Quote, error) {
 func PickQuoteFromAuthor(author string) (Quote, error) {
 	filtered := quotes[:0]
 
-	log.Printf("%t %s", author == "", author)
-
 	if author == "" {
 		filtered = quotes
 	} else {
